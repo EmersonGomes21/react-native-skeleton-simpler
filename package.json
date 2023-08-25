@@ -1,8 +1,8 @@
 {
   "name": "react-native-skeleton-simpler",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple and fully customizable React Native component that implements a skeleton-like loader",
-  "main": "lib/index.js",
+  "main": "lib/index.tsx",
   "private": false,
   "keywords": [
     "react native",

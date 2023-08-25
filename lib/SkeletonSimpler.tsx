@@ -10,7 +10,7 @@ export default ({
   theme = "light",
   layout = [],
   duration = 1000,
-  useNativeDriver = true,
+  useNativeDriver = false,
 }: {
   loading: boolean;
   children: React.ReactNode;
@@ -55,7 +55,7 @@ export default ({
   );
 };
 
-const getLayout = (layoutConfigs = []) => {
+const getLayout = (layoutConfigs: ViewStyle[] = []) => {
   if (layoutConfigs.length === 0) return null;
   return (
     <>
