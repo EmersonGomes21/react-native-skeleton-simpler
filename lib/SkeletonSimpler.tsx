@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, View, ViewStyle } from "react-native";
-import { SkeletonItem } from "./";
+import { SkeletonItem } from ".";
 import { ContextSkeletonSimpler, ThemeType } from "./context";
 
 export default ({
