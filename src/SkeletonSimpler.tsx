@@ -6,11 +6,13 @@ import { ContextSkeletonSimpler, ThemeType } from "./context";
 export default ({
   loading,
   children,
-  SkeletonComponent = () => <></>,
+  SkeletonComponent,
   theme = "light",
   layout = [],
-  duration = 1000,
+  duration = 1300,
   useNativeDriver = false,
+  containerSkeletonStyle,
+  animatedConfig = {},
 }: {
   loading: boolean;
   children: React.ReactNode;
@@ -19,15 +21,23 @@ export default ({
   layout?: ViewStyle[];
   duration?: number;
   useNativeDriver?: boolean;
+  animatedConfig?: Animated.TimingAnimationConfig | {};
+  containerSkeletonStyle?: ViewStyle;
 }) => {
   const AnimatedValue = useRef(new Animated.Value(0)).current;
+
+  const defaultConfigs = {
+    toValue: 1,
+    duration: 1000,
+    useNativeDriver,
+    delay: 800,
+  };
 
   useEffect(() => {
     const animation = Animated.loop(
       Animated.timing(AnimatedValue, {
-        toValue: 1,
-        duration,
-        useNativeDriver,
+        ...defaultConfigs,
+        ...animatedConfig,
       })
     );
 
@@ -47,8 +57,10 @@ export default ({
 
   return (
     <ContextSkeletonSimpler.Provider value={{ AnimatedValue, theme }}>
-      <View style={{ flex: 1 }}>
-        {isVisibleCustomSkeleton && <SkeletonComponent />}
+      <View style={[{ flex: 1 }, containerSkeletonStyle ?? {}]}>
+        {isVisibleCustomSkeleton && SkeletonComponent ? (
+          <SkeletonComponent />
+        ) : null}
         {!isVisibleCustomSkeleton && getLayout(layout)}
       </View>
     </ContextSkeletonSimpler.Provider>

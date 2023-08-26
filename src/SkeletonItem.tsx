@@ -47,7 +47,7 @@ const useStyles = (translate = {}, theme: ThemeType) => {
       width: "90%",
       height: "100%",
       opacity: 0.13,
-      backgroundColor: "#e40f0ff",
+      backgroundColor: "#ffffff",
       ...translate,
     },
   });
