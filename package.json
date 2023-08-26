@@ -2,7 +2,14 @@
   "name": "react-native-skeleton-simpler",
   "version": "1.0.2",
   "description": "A simple and fully customizable React Native component that implements a skeleton-like loader",
-  "main": "lib/index.tsx",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.ts",
+  "types": "lib/typescript/index.d.ts",
+  "files": [
+    "lib/",
+    "src/"
+  ],
   "private": false,
   "keywords": [
     "react native",
@@ -12,11 +19,22 @@
     "placeholders",
     "animation"
   ],
-  "files": [
-    "lib/**/*"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "copyFlow": true
+        }
+      ],
+      "module",
+      "typescript"
+    ]
+  },
+  "scripts": { 
+    "build": "bob build"
   },
   "moduleFileExtensions": [
     "js",
@@ -40,8 +58,13 @@
     "react-native": "^0.71.8"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@babel/plugin-transform-typescript": "^7.22.11",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.11",
     "@types/react": "^18.2.21",
-    "@types/react-native": "^0.72.2"
+    "@types/react-native": "^0.72.2",
+    "react-native-builder-bob": "^0.21.3",
+    "typescript": "^5.2.2"
   }
 }

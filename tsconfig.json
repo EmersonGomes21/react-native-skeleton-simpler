@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "target": "ES6",
     "module": "commonjs",
-    "baseUrl": "lib",
-    "types": ["react-native"],
-    "lib": [
-      "es2019"
-    ],
+    "lib": ["ES2015", "ES2016", "ESNext"],
+    "baseUrl": "./src",
     "allowJs": true,
     "jsx": "react-native",
-    "noEmit": true,
     "isolatedModules": true,
     "strict": true,
     "moduleResolution": "node",
@@ -17,12 +14,13 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    
   },
+  "include": ["src/**/*.ts"],
   "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/demos/**",
   ]
 }
