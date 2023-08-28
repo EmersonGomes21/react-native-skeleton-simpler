@@ -53,14 +53,13 @@ export default ({
     return children;
   }
 
-  const isVisibleCustomSkeleton = layout.length === 0 || !layout;
+  const isVisibleCustomSkeleton =
+    SkeletonComponent && (layout.length === 0 || !layout);
 
   return (
     <ContextSkeletonSimpler.Provider value={{ AnimatedValue, theme }}>
       <View style={[{ flex: 1 }, containerSkeletonStyle ?? {}]}>
-        {isVisibleCustomSkeleton && SkeletonComponent ? (
-          <SkeletonComponent />
-        ) : null}
+        {isVisibleCustomSkeleton && <SkeletonComponent />}
         {!isVisibleCustomSkeleton && getLayout(layout)}
       </View>
     </ContextSkeletonSimpler.Provider>

@@ -1,3 +1,4 @@
+import React from "react";
 import { ContextSkeletonSimpler, ThemeType } from "./context";
 import { useContext, useState } from "react";
 import { ViewProps, ViewStyle, StyleSheet, View, Animated } from "react-native";
