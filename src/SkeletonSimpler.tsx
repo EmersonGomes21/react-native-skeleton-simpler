@@ -11,7 +11,7 @@ export default ({
   layout = [],
   duration = 1300,
   useNativeDriver = false,
-  containerSkeletonStyle,
+  containerStyle,
   animatedConfig = {},
 }: {
   loading: boolean;
@@ -22,7 +22,7 @@ export default ({
   duration?: number;
   useNativeDriver?: boolean;
   animatedConfig?: Animated.TimingAnimationConfig | {};
-  containerSkeletonStyle?: ViewStyle;
+  containerStyle?: ViewStyle;
 }) => {
   const AnimatedValue = useRef(new Animated.Value(0)).current;
 
@@ -58,7 +58,7 @@ export default ({
 
   return (
     <ContextSkeletonSimpler.Provider value={{ AnimatedValue, theme }}>
-      <View style={[{ flex: 1 }, containerSkeletonStyle ?? {}]}>
+      <View style={[{ flex: 1 }, containerStyle ?? {}]}>
         {isVisibleCustomSkeleton && <SkeletonComponent />}
         {!isVisibleCustomSkeleton && getLayout(layout)}
       </View>
@@ -70,8 +70,8 @@ const getLayout = (layoutConfigs: ViewStyle[] = []) => {
   if (layoutConfigs.length === 0) return null;
   return (
     <>
-      {layoutConfigs.map((stylesLayoutItem) => {
-        return <SkeletonItem style={stylesLayoutItem} />;
+      {layoutConfigs.map((stylesLayoutItem, i) => {
+        return <SkeletonItem key={i} style={stylesLayoutItem} />;
       })}
     </>
   );
