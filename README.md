@@ -176,10 +176,21 @@ const SkeletonComponent = () => (
 
 ```jsx
     
-    <SkeletonSimpler loading={loading} SkeletonComponent={SkeletonComponent}>
+  export const SkeletonSimplerExample = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
+
+  return (
+    <SkeletonSimpler loading={loading} SkeletonComponent={SkeletonLoader}>
       <View>
         <Text>Your children</Text>
       </View>
     </SkeletonSimpler>
+  );
+};
 
 ```
+### You can find this complete example [here](https://github.com/EmersonGomes21/react-native-skeleton-simpler/blob/main/examples/index.tsx)
